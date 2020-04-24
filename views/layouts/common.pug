@@ -7,7 +7,7 @@ html
         script(src="/Bai-2/db.js")
     body   
         nav.navbar.navbar-expand-sm.navbar-light.bg-light
-                a.navbar-brand(href='/') CodersX
+                a.navbar-brand(href='#') CodersX
                 button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', 
                 aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
@@ -22,6 +22,8 @@ html
                         li.nav-item
                             a.nav-link(href='/transactions') Transactions
                         li.nav-item
-                            a.nav-link(href='/transaction/menu') Transaction Menu       
+                            a.nav-link(href='/transaction/menu') Transaction Menu               
+                if user
+                        p=user.name            
         .container.pt-5
             block content

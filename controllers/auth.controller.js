@@ -26,7 +26,9 @@ module.exports.postAuth = (req, res) =>{
             res.redirect('/auth/login');
             return;
         } else {
-            res.cookie("userId1", user.id);
+            res.cookie("userId1", user.id,{
+                signed: true
+            });
             if (!user.isAdmin){
                 res.redirect('/transaction/menu')
             }
