@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block content 
+    h1 Hello
+    table.table
+        tr
+            th Book Title
+            th Complete
+        each item in transaction
+            tr
+                each book in books
+                    if(book.id === item.bookId)
+                        td=book.title
+                        td=item.isComplete

@@ -1,62 +1,34 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-const shortid = require('shortid');
+var cookieParser = require('cookie-parser')
 const port = 3000
 
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
- 
-const adapter = new FileSync('db.json')
-const db = low(adapter)
+const bookRouter = require('./router/book.router');
+const userRouter = require('./router/user.router');
+const transactionRouter = require('./router/transaction.router')
+const authRouter = require("./router/auth.router");
+const menuRouter = require("./router/transactionMenu.router")
+const authMiddleware = require("./middlewares/auth.middleware");
+const adminMiddleware = require('./middlewares/admin.middleware');
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) 
 // for parsing application/x-www-form-urlencoded
+app.use(cookieParser())
 
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-app.get('/books', (req, res) => {
-  res.render("index", {
-    bookList: db.get("books").value()
-  });
-});
+app.get('/', (req, res) =>{res.render("index")})
 
-app.get('/books/add', (req, res) => {
-  res.render("add/index")
-});
+app.use(express.static('public'))
 
-app.post("/books/add", (req, res) =>{
-  req.body.id = shortid.generate();
-  db.get("books").push(req.body).write();
-  res.redirect("/books");
-});
-
-app.get("/books/:id/delete", (req, res) =>{
-  let id = req.params.id
-  db.get("books").remove({id: id}).write();
-  res.redirect("/books");
-});
-
-app.get("/books/:id", (req, res) =>{
-  let id = req.params.id
-  let book = db.get('books')
-  .find({ id: id })
-  .write()
-  res.render("update/index", {
-    book: book
-  })
-});
-
-app.post("books/update", (req, res) => {
-  let id = req.body.id
-  db.get('books')
-  .find({ id: id })
-  .assign({ title: req.body.title })
-  .write()
-  res.redirect("/books");
-})
+app.use('/auth', authRouter);
+app.use('/books', authMiddleware.authRequire, adminMiddleware.requireRole(true), bookRouter);
+app.use('/users', authMiddleware.authRequire, adminMiddleware.requireRole(true), userRouter);
+app.use('/transactions', authMiddleware.authRequire, adminMiddleware.requireRole(true), transactionRouter)
+app.use('/transaction', authMiddleware.authRequire, adminMiddleware.requireRole(false), menuRouter)
 
 // listen for requests :)
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));

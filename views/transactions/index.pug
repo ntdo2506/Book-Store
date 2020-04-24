@@ -1,0 +1,36 @@
+extends ../layouts/common.pug
+
+block content      
+    h2.d-flex.align-items-center 
+        span.mr-3 Transactions
+        a.btn.btn-primary(href="transactions/create") Create
+    table.table.table-bordered
+        tr
+            th(colspan="2") USER
+            th(colspan="2") BOOK
+            th CHECK
+            th COMPLETE
+        each transaction in transactions
+            tr
+                th UserId
+                td=transaction.userId
+                th BookId
+                td=transaction.bookId
+                td(rowspan="2")
+                    if transaction.isComplete
+                        p Hoàn thành
+                    else 
+                        form(action='/transactions/' + transaction.id + '/complete', method='post')
+                            button.btn.btn-light(type='submit') Complete
+                td(rowspan="2")=transaction.isComplete
+            tr    
+                th User Name
+                each user in users
+                    if(transaction.userId === user.id)
+                        td=user.name
+                th Book Name
+                each book in books
+                    if(transaction.bookId === book.id)
+                        td=book.title
+
+

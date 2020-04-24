@@ -1,0 +1,12 @@
+extends ../layouts/common.pug
+
+block content 
+  h2 Update title
+
+  p Old Title: 
+    span=book.title
+  form(action="/books/update" method="POST")
+    labe New Title:
+      input(type="hidden" name="id", value=id)
+      input(type="text" name="title" class="form-control")
+      button(class="btn btn-primary mt-2") Update

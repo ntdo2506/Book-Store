@@ -1,10 +1,9 @@
-h2 Books
-a(href="/books/add") New Book
-ul
-  each book in bookList
-    li
-      span= book.title
-      span &nbsp;
-      a(href="/books/" +book.id +"/delete") Delete
-      span &nbsp;
-      a(href="/books/" +book.id) Update
+extends ./layouts/common.pug
+
+block content     
+    h1 Hello Do
+    div(class="d-flex flex-column")
+        a(href="/books") Books
+        a(href="/users") Users
+        a(href="/transactions") Transactions
+        a(href="/transaction/menu") Transaction Menu

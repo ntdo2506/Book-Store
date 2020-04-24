@@ -1,0 +1,20 @@
+extends ../layouts/common.pug
+
+block content
+  h2.d-flex.align-items-center
+    span.mr-3 Books
+    a.btn.btn-primary(href="/books/add") New Book
+  table.table
+    tr
+      th Title
+      th Descriptions
+      th Delete
+      th Update
+    each book in bookList
+      tr
+        td= book.title
+        td= book.description
+        td 
+          a.btn.btn-light(href="/books/" +book.id +"/delete") Delete
+        td
+          a.btn.btn-light(href="/books/" +book.id + "/update") Update

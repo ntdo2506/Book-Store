@@ -1,0 +1,17 @@
+extends ../layouts/common.pug
+
+block content      
+    h2 Create transaction
+    form(action="/transactions/create" method="POST")
+        div
+            label Choose user
+            select(name="userId" class="form-control")
+                each user in users
+                    option( value=user.id)=user.name
+        div
+            label Choose book
+            select(name="bookId" class="form-control")
+                each book in books
+                    option(value=book.id)=book.title
+        div        
+        button(type="submit" class="btn-primary btn mt-2") Create
