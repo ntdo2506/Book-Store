@@ -2,8 +2,12 @@ const shortid = require('shortid')
 const db = require('../db')
 
 module.exports.index = (req, res) =>{
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 5;
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
     res.render("transactions/index",{
-        transactions: db.get('transactions').value(),
+        transactions: db.get('transactions').value().slice(start, end),
         users: db.get('users').value(),
         books: db.get('books').value()
     })

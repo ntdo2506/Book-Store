@@ -4,8 +4,12 @@ const md5 = require('md5')
 const bcrypt = require('bcrypt')
 
 module.exports.index = (req, res) =>{
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 10;
+    let start = (page -1) * perPage;
+    let end = page * perPage;
     res.render('users/index',{
-        users: db.get("users").value()
+        users: db.get("users").value().slice(start, end)
     });   
 }
 
