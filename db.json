@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "title": "GIT",
+      "title": "UI/UX",
       "description": "Hay",
       "id": "XVY9IJMHl"
     },
@@ -13,53 +13,44 @@
   ],
   "users": [
     {
-      "name": "Tay",
-      "phone": "0702744434",
-      "id": "okBt4dNL2",
-      "email": "do.nguyen.tt.1995@gmail.com",
-      "password": "123123",
-      "isAdmin": false
-    },
-    {
-      "name": "Do",
+      "name": "Nguyễn Thanh Đô",
       "phone": "1202744434",
       "id": "62KCgi9Zr",
       "email": "ntdo.13cdt1@gmail.com",
-      "password": "123123",
-      "isAdmin": true
+      "password": "$2b$10$fiqLrSjQbQbKyKwX2Rm/6uYDFx3n08mXJBlJl8ZLUsSS9OFzlrEd.",
+      "isAdmin": true,
+      "wrongLoginCount": 0
     },
     {
-      "name": "Vuong",
+      "name": "Lap",
       "phone": "0905409257",
       "email": "khanh10nh3@yahoo.com",
-      "password": "123123",
-      "id": "-uqnNiMWf",
-      "isAdmin": false
+      "password": "$2b$10$RsQ7xGQYMDEoqXj3c5rR9.38pKgDEQeJHAZ6ylWXnf6P9EGhohenm",
+      "id": "9mwN58hXx",
+      "isAdmin": false,
+      "wrongLoginCount": 0
+    },
+    {
+      "name": "Tay",
+      "phone": "0905176201",
+      "email": "do.nguyen.tt.1995@gmail.com",
+      "password": "$2b$10$wojuRF/olbmVEbZ9/W8O4.psJtCKXMyIl4UBcYidSgoDhsCeDQpcq",
+      "id": "eOCHiyWh-",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
     {
-      "userId": "okBt4dNL2",
+      "userId": "eOCHiyWh-",
       "bookId": "XVY9IJMHl",
-      "id": "A6ai-oEuI",
-      "isComplete": true
-    },
-    {
-      "userId": "okBt4dNL2",
-      "bookId": "Yfl2LixYk",
-      "id": "I_DEmqv8M",
+      "id": "H2K1O-VH-",
       "isComplete": false
     },
     {
-      "userId": "62KCgi9Zr",
-      "bookId": "XVY9IJMHl",
-      "id": "1o5TFQJz3",
-      "isComplete": false
-    },
-    {
-      "userId": "62KCgi9Zr",
+      "userId": "eOCHiyWh-",
       "bookId": "Yfl2LixYk",
-      "id": "Dv4Bh4uNs",
+      "id": "-Wq7nJS7A",
       "isComplete": false
     }
   ]

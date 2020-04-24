@@ -1,5 +1,7 @@
 const shortid = require('shortid')
 const db = require('../db')
+const md5 = require('md5')
+const bcrypt = require('bcrypt')
 
 module.exports.index = (req, res) =>{
     res.render('users/index',{
@@ -13,8 +15,11 @@ module.exports.add = (req, res) =>{
 
 module.exports.postAdd = (req, res) =>{
     req.body.id = shortid.generate(); 
-    req.body.isAdmin = false;   
-    db.get('users').push(req.body).write();
+    req.body.isAdmin = false;
+    bcrypt.hash(req.body.password, 10, function(err, hash) {
+        req.body.password = hash;
+        db.get('users').push(req.body).write();
+    });
     res.redirect("/users");
 }
 
