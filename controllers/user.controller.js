@@ -2,6 +2,13 @@ const shortid = require('shortid')
 const db = require('../db')
 const md5 = require('md5')
 const bcrypt = require('bcrypt')
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({ 
+    cloud_name: 'echsd', 
+    api_key: '574173492831595', 
+    api_secret: 'snv5aigseeto6DQYd_RL9z8jpLQ' 
+});
 
 module.exports.index = (req, res) =>{
     let page = parseInt(req.query.page) || 1;
@@ -20,6 +27,8 @@ module.exports.add = (req, res) =>{
 module.exports.postAdd = (req, res) =>{
     req.body.id = shortid.generate(); 
     req.body.isAdmin = false;
+    req.body.avatarUrl = "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png";
+    req.body.wrongLoginCount = 0;
     bcrypt.hash(req.body.password, 10, function(err, hash) {
         req.body.password = hash;
         db.get('users').push(req.body).write();
@@ -35,7 +44,7 @@ module.exports.delete = (req, res) =>{
 
 module.exports.update = (req, res) =>{
     let id = req.params.id;
-    res.render("users/update",{
+    res.render("users/profile",{
         id: id,
         user: db.get("users").find({id: id}).value()
     });
@@ -43,6 +52,32 @@ module.exports.update = (req, res) =>{
 
 module.exports.postUpdate = (req, res) =>{
     let id = req.body.id;
-    db.get('users').find({id: id}).assign({ name: req.body.name}).write();
-    res.redirect("/users");
+    bcrypt.hash(req.body.password, 10, function(err, hash) {
+        req.body.password = hash;
+        db.get('users').find({id: id}).assign({ 
+            name: req.body.name, 
+            phone: req.body.phone,
+            email: req.body.email,
+            password: req.body.password
+        }).write();
+        res.redirect("/users");
+    });
+}
+
+module.exports.updateAvatar = (req,res) =>{
+    let id = req.params.id;
+    res.render("users/updateAvatar",{
+        id: id,
+        user: db.get("users").find({id: id}).value()
+    });
+}
+
+module.exports.postUpdateAvatar = (req, res) =>{
+    let id = req.body.id;
+    cloudinary.uploader.upload(req.file.path, function(error, result) {
+        db.get('users').find({id: id}).assign({ 
+            avatarUrl: result.url
+        }).write();
+        res.redirect("/users");
+    });
 }

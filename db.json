@@ -603,13 +603,14 @@
   ],
   "users": [
     {
-      "name": "Nguyễn Thanh Đô",
-      "phone": "1202744434",
+      "name": "Do",
+      "phone": "0702744434",
       "id": "62KCgi9Zr",
       "email": "ntdo.13cdt1@gmail.com",
-      "password": "$2b$10$fiqLrSjQbQbKyKwX2Rm/6uYDFx3n08mXJBlJl8ZLUsSS9OFzlrEd.",
-      "isAdmin": true,
-      "wrongLoginCount": 0
+      "password": "$2b$10$RsQ7xGQYMDEoqXj3c5rR9.38pKgDEQeJHAZ6ylWXnf6P9EGhohenm",
+      "isAdmin": false,
+      "wrongLoginCount": 4,
+      "avatar": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "name": "Lap",
@@ -618,7 +619,7 @@
       "password": "$2b$10$RsQ7xGQYMDEoqXj3c5rR9.38pKgDEQeJHAZ6ylWXnf6P9EGhohenm",
       "id": "9mwN58hXx",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 1
     },
     {
       "name": "Tay",
@@ -626,8 +627,9 @@
       "email": "do.nguyen.tt.1995@gmail.com",
       "password": "$2b$10$wojuRF/olbmVEbZ9/W8O4.psJtCKXMyIl4UBcYidSgoDhsCeDQpcq",
       "id": "eOCHiyWh-",
-      "isAdmin": false,
-      "wrongLoginCount": 4
+      "isAdmin": true,
+      "wrongLoginCount": 0,
+      "avatarUrl": "http://res.cloudinary.com/echsd/image/upload/v1587962698/dl1tix5cahovdz86rizv.png"
     },
     {
       "id": "140e9a4f-a8f0-46f3-ab1a-e916cf5920d1",
@@ -1428,6 +1430,15 @@
       "email": "eguttridge2r@addtoany.com",
       "isAdmin": false,
       "wrongLoginCount": 0
+    },
+    {
+      "name": "Nguyễn Thanh Đô",
+      "phone": "1202744434",
+      "email": "do.nguyen.tt.1995@gmail.com",
+      "password": "$2b$10$CJKsW6OD5Zt175QNxT6j8ens71Z9Dm5XRHg2/dXkrbEa2bJTVoNR6",
+      "id": "deBz3iMik",
+      "isAdmin": false,
+      "avatar": "http://res.cloudinary.com/echsd/image/upload/v1587956159/m6wogain6leryeh75oxi.jpg"
     }
   ],
   "transactions": []

@@ -1,0 +1,13 @@
+extends ../layouts/common.pug
+
+block content    
+    h2 Update avatar
+    p Old avatar: 
+        img(src=user.avatarUrl width="48")
+    
+    form(action="/users/profile/avatar" method="POST" enctype="multipart/form-data")
+        input(type="hidden" name="id", value=id)   
+        .form-group
+            label(for="avatar") Avatar
+            input#avatar(type="file" name="avatarUrl")
+        button(class="btn btn-primary mt-2") Submit

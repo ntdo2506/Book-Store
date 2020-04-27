@@ -6,15 +6,18 @@ block content
         a.btn.btn-primary(href="/users/add") New User
     table.table
             tr
+                th Avatar
                 th Name
                 th Phone
                 th Delete
                 th Update
             each user in users
                 tr
+                    td
+                        img(src=user.avatarUrl width="48")
                     td= user.name
                     td= user.phone
                     td
                         a.btn.btn-light(href="/users/" +user.id +"/delete") Delete
                     td 
-                        a.btn.btn-light(href="/users/" +user.id + "/update") Update
+                        a.btn.btn-light(href="/users/" +user.id + "/profile") Update
