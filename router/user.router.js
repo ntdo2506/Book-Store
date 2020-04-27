@@ -4,7 +4,7 @@ const validate = require('../validate/user.validate')
 const multer  = require('multer')
 
 const router = express.Router()
-const upload = multer({ dest: './public/uploads/' })
+const upload = multer({ dest: './public/uploads/avatar/' })
 
 router.get("/", controller.index);
 

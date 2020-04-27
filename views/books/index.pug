@@ -6,12 +6,15 @@ block content
     a.btn.btn-primary(href="/books/add") New Book
   table.table
     tr
+      th Book Cover
       th Title
       th Descriptions
       th Delete
       th Update
     each book in bookList
       tr
+        td
+          img(src=book.coverUrl, width="48")
         td= book.title
         td= book.description
         td 

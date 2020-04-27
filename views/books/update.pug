@@ -5,8 +5,13 @@ block content
 
   p Old Title: 
     span=book.title
-  form(action="/books/update" method="POST")
+  p Old Cover: 
+    span
+      img(src=book.coverUrl, width="48")
+  form(action="/books/update" method="POST" enctype="multipart/form-data")
     labe New Title:
       input(type="hidden" name="id", value=id)
       input(type="text" name="title" class="form-control")
-      button(class="btn btn-primary mt-2") Update
+    labe New cover:
+      input(type="file" name="coverUrl")
+    button(class="btn btn-primary mt-2") Update

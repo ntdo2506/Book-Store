@@ -74,7 +74,7 @@ module.exports.updateAvatar = (req,res) =>{
 
 module.exports.postUpdateAvatar = (req, res) =>{
     let id = req.body.id;
-    cloudinary.uploader.upload(req.file.path, function(error, result) {
+    cloudinary.uploader.upload(req.body.coverUrl, function(error, result) {
         db.get('users').find({id: id}).assign({ 
             avatarUrl: result.url
         }).write();

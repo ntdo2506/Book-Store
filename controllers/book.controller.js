@@ -1,5 +1,12 @@
 const shortid = require('shortid')
 const db = require('../db')
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({ 
+    cloud_name: 'echsd', 
+    api_key: '574173492831595', 
+    api_secret: 'snv5aigseeto6DQYd_RL9z8jpLQ' 
+});
 
 module.exports.index = (req, res) => {
     res.render("books/index", {
@@ -33,9 +40,12 @@ module.exports.update = (req, res) => {
 
 module.exports.postUpdate = (req, res) => {
     let id = req.body.id
-    db.get('books')
-    .find({ id: id })
-    .assign({ title: req.body.title })
-    .write()
-    res.redirect("/books");
+    cloudinary.uploader.upload(req.file.path, function(error, result) {
+        db.get('books').find({ id: id }).assign({ 
+            title: req.body.title,
+            coverUrl: result.url
+            }).write()
+        res.redirect("/books");
+    });
+    
 }

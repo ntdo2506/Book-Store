@@ -2,9 +2,9 @@
   "books": [
     {
       "id": "4f809b3f-ace4-4bf5-a131-45cf715016bd",
-      "title": "This Is My Life",
+      "title": "GIT",
       "description": "rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo",
-      "coverUrl": "https://loremflickr.com/320/240"
+      "coverUrl": "http://res.cloudinary.com/echsd/image/upload/v1587970303/a13ajmn3j5urbjsyyj24.jpg"
     },
     {
       "id": "69d22e7c-9591-4747-922d-f68135f2b32d",
@@ -607,10 +607,10 @@
       "phone": "0702744434",
       "id": "62KCgi9Zr",
       "email": "ntdo.13cdt1@gmail.com",
-      "password": "$2b$10$RsQ7xGQYMDEoqXj3c5rR9.38pKgDEQeJHAZ6ylWXnf6P9EGhohenm",
-      "isAdmin": false,
-      "wrongLoginCount": 4,
-      "avatar": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
+      "password": "$2b$10$IcWQPXGvmR6dikh.CAjnJesEMeByzeaagssGv4UuNH65NvFZrTQZW",
+      "isAdmin": true,
+      "wrongLoginCount": 0,
+      "avatarUrl": "http://res.cloudinary.com/echsd/image/upload/v1587962923/qgltypanz47w6oesjwzg.jpg"
     },
     {
       "name": "Lap",
@@ -619,7 +619,8 @@
       "password": "$2b$10$RsQ7xGQYMDEoqXj3c5rR9.38pKgDEQeJHAZ6ylWXnf6P9EGhohenm",
       "id": "9mwN58hXx",
       "isAdmin": false,
-      "wrongLoginCount": 1
+      "wrongLoginCount": 1,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "name": "Tay",
@@ -627,7 +628,7 @@
       "email": "do.nguyen.tt.1995@gmail.com",
       "password": "$2b$10$wojuRF/olbmVEbZ9/W8O4.psJtCKXMyIl4UBcYidSgoDhsCeDQpcq",
       "id": "eOCHiyWh-",
-      "isAdmin": true,
+      "isAdmin": false,
       "wrongLoginCount": 0,
       "avatarUrl": "http://res.cloudinary.com/echsd/image/upload/v1587962698/dl1tix5cahovdz86rizv.png"
     },
@@ -637,7 +638,8 @@
       "phone": "304-309-1031",
       "email": "carthur0@twitpic.com",
       "isAdmin": true,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "648f6fa3-2a8c-4f4e-afdf-374d2a34c705",
@@ -645,7 +647,8 @@
       "phone": "152-532-2453",
       "email": "kboxhall1@odnoklassniki.ru",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "68d93828-b54b-4cb9-8f9e-d87e04094135",
@@ -653,7 +656,8 @@
       "phone": "819-832-2603",
       "email": "tpicard2@epa.gov",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "a22151bf-3c2a-448d-b14f-8703bbfa5eb5",
@@ -661,7 +665,8 @@
       "phone": "724-401-0911",
       "email": "enial3@sun.com",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "eb27e56e-b894-4a23-8a5f-62b721f71c45",
@@ -669,7 +674,8 @@
       "phone": "918-461-8505",
       "email": "arandalson4@fastcompany.com",
       "isAdmin": true,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "35207d89-a604-4e1e-a1af-3b4b43cd2493",
@@ -677,7 +683,8 @@
       "phone": "757-926-6191",
       "email": "cjaneway5@kickstarter.com",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "8fc7e326-a81f-4428-bf7a-a65e4bceee84",
@@ -685,7 +692,8 @@
       "phone": "348-153-4316",
       "email": "pjahnig6@drupal.org",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "610c5b82-f175-4f75-b4e5-f983af9d0b2b",
@@ -693,7 +701,8 @@
       "phone": "670-131-3304",
       "email": "aremington7@networkadvertising.org",
       "isAdmin": true,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "b5c04d01-900e-4613-8d49-a8c422c5d913",
@@ -701,7 +710,8 @@
       "phone": "661-836-8918",
       "email": "dgingles8@webs.com",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "bef06def-14b3-4881-b037-a7d44612a75b",
@@ -709,7 +719,8 @@
       "phone": "486-842-0753",
       "email": "hknivett9@businessinsider.com",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "8ae99b81-9b1a-4b51-a204-a70f67ae1454",
@@ -717,7 +728,8 @@
       "phone": "941-586-7093",
       "email": "rcordeta@nyu.edu",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
     {
       "id": "04ed0096-385c-4b74-b2d8-89aae09d2fb6",
@@ -1441,5 +1453,12 @@
       "avatar": "http://res.cloudinary.com/echsd/image/upload/v1587956159/m6wogain6leryeh75oxi.jpg"
     }
   ],
-  "transactions": []
+  "transactions": [
+    {
+      "userId": "9mwN58hXx",
+      "bookId": "b6083e0d-d22c-4ce9-b4d0-4c635ad78e1f",
+      "id": "-HK-AatNS",
+      "isComplete": false
+    }
+  ]
 }
