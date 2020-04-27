@@ -11,6 +11,4 @@ router.post('/create', controller.postCreate);
 
 router.get("/:id/complete", controller.complete);
 
-router.get("/menu", controller.menu);
-
 module.exports = router;

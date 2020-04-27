@@ -36,7 +36,3 @@ module.exports.complete = (req, res) =>{
     db.get('transactions').find({id: id}).assign({ isComplete: true}).write();
     res.redirect("/transactions");
 }
-
-module.exports.menu = (req, res) =>{
-    res.render("transactions/menu")
-}

@@ -7,23 +7,34 @@ html
         script(src="/Bai-2/db.js")
     body   
         nav.navbar.navbar-expand-sm.navbar-light.bg-light
-                a.navbar-brand(href='#') CodersX
-                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', 
-                aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                a.navbar-brand(href='/') CodersX
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
                 #navbarNav.collapse.navbar-collapse
                     ul.navbar-nav
-                        li.nav-item
-                            a.nav-link(href='/') Home
-                        li.nav-item
-                            a.nav-link(href='/books') Books
-                        li.nav-item
-                            a.nav-link(href='/users') Users 
-                        li.nav-item
-                            a.nav-link(href='/transactions') Transactions
-                        li.nav-item
-                            a.nav-link(href='/transaction/menu') Transaction Menu               
-                if user
-                        p=user.name            
+                        if !user
+                            li.nav-item
+                                a.nav-link(href='/') Home
+                            li.nav-item
+                                a.nav-link(href='/store') Store 
+                        else 
+                            if(user.isAdmin === true)
+                                li.nav-item
+                                    a.nav-link(href='/users') User
+                                li.nav-item
+                                    a.nav-link(href='/books') Book 
+                                li.nav-item
+                                    a.nav-link(href='/transactions') Transaction
+                            else
+                                li.nav-item
+                                    a.nav-link(href='/transaction/menu') Transaction Menu                           
+                    
+                    ul.navbar-nav.ml-auto
+                        if user
+                            li.nav-ite.ml-auto
+                                span=user.name   
+                        else
+                            li.nav-ite.ml-auto
+                                a.nav-link(href='/auth/login') Login              
         .container.pt-5
             block content

@@ -1,0 +1,14 @@
+extends ../layouts/common
+
+block content
+    h1.mb-5 Books
+
+    .row
+        each book in books
+            .col-sm-6.col-md-4.col-lg-3
+                .card.mb-3
+                    img.card-img-top(src= book.coverUrl)
+                    .card-body
+                        h5.card-title= book.title
+                        p.card-text= book.description
+                        a.btn.btn-primary(href='#') Add to cart

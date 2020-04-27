@@ -17,11 +17,10 @@ block content
                 th BookId
                 td=transaction.bookId
                 td(rowspan="2")
-                    if transaction.isComplete
-                        p Hoàn thành
-                    else 
-                        form(action='/transactions/' + transaction.id + '/complete', method='post')
-                            button.btn.btn-light(type='submit') Complete
+                    if !transaction.isComplete
+                        a(href=`/transactions/${transaction.id}/complete`) Complete
+                    else
+                        span Completed
                 td(rowspan="2")=transaction.isComplete
             tr    
                 th User Name

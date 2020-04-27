@@ -2,6 +2,7 @@ const md5 = require('md5')
 const bcrypt = require('bcrypt')
 const db = require('../db')
 var nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 
 module.exports.auth = (req, res) => {
     res.render('auth/login')
@@ -11,18 +12,13 @@ module.exports.postAuth = (req, res) =>{
     let email = req.body.email;
     let password = req.body.password;
     let user = db.get("users").find({email: email}).value();
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: "ntdo.13cdt1@gmail.com",
-            pass: 'nguyenthanhdo12'
-        }
-    });
-    var mailOptions = {
-        from: "ntdo.13cdt1@gmail.com",
-        to: "do.nguyen.tt.1995@gmail.com",
-        subject: 'Gửi email dùng Node.js --- dammio.com',
-        text: 'Xin chào, đây là email gửi bằng Node.js --- dammio.com'
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
+        to: 'ntdo.13cdt1@gmail.com',
+        from: 'do.nguyen.tt.1995@gmail.com',
+        subject: 'Login book store',
+        text: 'Mat khau sai qua 4 lan',
+        html: '<strong>Mat khau sai qua 4 lan</strong>',
     };
     if(!user){
         res.redirect('/auth/login');
@@ -30,13 +26,15 @@ module.exports.postAuth = (req, res) =>{
     }
     let count = user.wrongLoginCount; 
     if (count >= 4){
-        transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
+        sgMail
+            .send(msg)
+            .then(() => {}, error => {
+                console.error(error);
+            
+                if (error.response) {
+                console.error(error.response.body)
+                }
+            });
         res.send("Wrong password more 4! Reset database");
         return;
     }
@@ -50,10 +48,9 @@ module.exports.postAuth = (req, res) =>{
             res.cookie("userId1", user.id,{
                 signed: true
             });
-            if (!user.isAdmin){
+            if (user.isAdmin === false){
                 res.redirect('/transaction/menu')
-            }
-            res.redirect('/users')
+            } else res.redirect('/users')
         }
     });    
     
