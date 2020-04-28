@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block content
+    h2 Cart
+    table.table
+        tr
+            th Book Title
+            th Quantity
+        each data, key in dataBook 
+            each book in books  
+                tr  
+                    if (key === book.id)
+                        td=book.title 
+                        td=data

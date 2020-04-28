@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const db = require('../db')
 var nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
+const shortid = require('shortid')
 
 module.exports.auth = (req, res) => {
     res.render('auth/login')
@@ -48,7 +49,16 @@ module.exports.postAuth = (req, res) =>{
             res.cookie("userId1", user.id,{
                 signed: true
             });
+            let sessionId = req.signedCookies.sessionId;
+            let bookId = db.get("sessions").find({id : sessionId}).value();
+            let data = {
+                userId: user.id,
+                bookId: Object.keys(bookId.cart),
+                id: shortid.generate(),
+                isComplete: false
+            };
             if (user.isAdmin === false){
+                db.get('transactions').push(data).write();
                 res.redirect('/transaction/menu')
             } else res.redirect('/users')
         }

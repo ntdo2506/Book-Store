@@ -19,6 +19,9 @@ html
                                 a.nav-link(href='/store') Store 
                             li.nav-item
                                 a.nav-link(href='/cart') Cart
+                            li.nav-item
+                                if cartCount
+                                    p=cartCount
                         else 
                             if(user.isAdmin === true)
                                 li.nav-item
@@ -37,6 +40,8 @@ html
                                 span=user.name   
                         else
                             li.nav-ite.ml-auto
-                                a.nav-link(href='/auth/login') Login              
+                                a.nav-link(href='/auth/login') Book Rental 
+                            li.nav-ite.ml-auto
+                                a.nav-link(href='/auth/login') Login  
         .container.pt-5
             block content
