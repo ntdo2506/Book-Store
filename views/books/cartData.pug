@@ -6,9 +6,9 @@ block content
         tr
             th Book Title
             th Quantity
-        each data, key in dataBook 
+        each data in cartData 
             each book in books  
                 tr  
-                    if (key === book.id)
+                    if (data.bookId === book.id)
                         td=book.title 
-                        td=data
+                        td=data.quantity

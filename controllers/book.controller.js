@@ -1,51 +1,57 @@
-const shortid = require('shortid')
-const db = require('../db')
-const cloudinary = require('cloudinary').v2;
+const cloudinary = require("cloudinary").v2;
+const Book = require("../models/book.model");
 
-cloudinary.config({ 
-    cloud_name: 'echsd', 
-    api_key: '574173492831595', 
-    api_secret: 'snv5aigseeto6DQYd_RL9z8jpLQ' 
+cloudinary.config({
+    cloud_name: "echsd",
+    api_key: "574173492831595",
+    api_secret: "snv5aigseeto6DQYd_RL9z8jpLQ",
 });
 
-module.exports.index = (req, res) => {
+module.exports.index = async (req, res) => {
+    // let page = parseInt(req.query.page) || 1;
+    // let perPage = 10;
+    // let start = (page - 1) * perPage;
+    // let end = page * perPage;
+    const book = await Book.find();
     res.render("books/index", {
-    bookList: db.get("books").value()
+        bookList: book,
     });
-}
+};
 
 module.exports.add = (req, res) => {
-    res.render("books/add")
-}
+    res.render("books/add");
+};
 
-module.exports.postAdd = (req, res) =>{
-    req.body.id = shortid.generate();
-    db.get("books").push(req.body).write();
-    res.redirect("/books");
-}
-
-module.exports.delete = (req, res) =>{
-    let id = req.params.id
-    db.get("books").remove({id: id}).write();
-    res.redirect("/books");
-}
-
-module.exports.update = (req, res) => {
-    let id = req.params.id;
-    res.render("books/update",{
-        id: id,
-        book: db.get("books").find({id: id}).value()
+module.exports.postAdd = async (req, res) => {
+    await Book.create({
+        title: req.body.title,
+        description: req.body.description,
     });
-}
+    res.redirect("/books");
+};
+
+module.exports.delete = async (req, res) => {
+    let id = req.params.id;
+    await Book.findByIdAndDelete(id, {});
+    res.redirect("/books");
+};
+
+module.exports.update = async (req, res) => {
+    let id = req.params.id;
+    const book = await Book.findById(id);
+    res.render("books/update", {
+        id: id,
+        book: book,
+    });
+};
 
 module.exports.postUpdate = (req, res) => {
-    let id = req.body.id
-    cloudinary.uploader.upload(req.file.path, function(error, result) {
-        db.get('books').find({ id: id }).assign({ 
+    let id = req.body.id;
+    cloudinary.uploader.upload(req.file.path, async function (error, result) {
+        await Book.findByIdAndUpdate(id, {
             title: req.body.title,
-            coverUrl: result.url
-            }).write()
+            coverUrl: result.url,
+        });
         res.redirect("/books");
     });
-    
-}
+};

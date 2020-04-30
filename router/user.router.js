@@ -1,10 +1,10 @@
-const express = require('express')
-const controller = require("../controllers/user.controller")
-const validate = require('../validate/user.validate')
-const multer  = require('multer')
+const express = require("express");
+const controller = require("../controllers/user.controller");
+const validate = require("../validate/user.validate");
+const multer = require("multer");
 
-const router = express.Router()
-const upload = multer({ dest: './public/uploads/avatar/' })
+const router = express.Router();
+const upload = multer({ dest: "./public/uploads/avatar/" });
 
 router.get("/", controller.index);
 
@@ -20,6 +20,10 @@ router.post("/profile", controller.postUpdate);
 
 router.get("/:id/profile/avatar", controller.updateAvatar);
 
-router.post("/profile/avatar", upload.single('avatarUrl'), controller.postUpdateAvatar);
+router.post(
+    "/profile/avatar",
+    upload.single("avatarUrl"),
+    controller.postUpdateAvatar
+);
 
 module.exports = router;

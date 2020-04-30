@@ -8,8 +8,8 @@ block content
             th Complete
         each item in transaction
             each book in books
-                each bookId in item.bookId
                     tr
-                        if(bookId === book.id)
-                            td=book.title
-                            td=item.isComplete    
+                        each itemId in item
+                            if(itemId.bookId === book.id)
+                                td=book.title
+                                td=item.isComplete    

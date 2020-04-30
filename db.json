@@ -637,7 +637,7 @@
       "name": "Collen",
       "phone": "304-309-1031",
       "email": "carthur0@twitpic.com",
-      "isAdmin": true,
+      "isAdmin": false,
       "wrongLoginCount": 0,
       "avatarUrl": "https://res.cloudinary.com/echsd/image/upload/v1587956694/avatar_pswii2.png"
     },
