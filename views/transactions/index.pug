@@ -4,7 +4,7 @@ block content
     h2.d-flex.align-items-center 
         span.mr-3 Transactions
         a.btn.btn-primary(href="transactions/create") Create
-    table.table.table-bordered
+    table.table(style="height: 100%")
         tr
             th(colspan="2") USER
             th(colspan="2") BOOK
@@ -31,5 +31,6 @@ block content
                 each book in books
                     if(transaction.bookId === book.id)
                         td=book.title
+    include ../layouts/pagination.pug 
 
 

@@ -58,9 +58,8 @@ module.exports.postAuth = async (req, res) => {
                 bookId: bookId.cart,
                 isComplete: false,
             };
-            console.log(data);
             if (user.isAdmin === false) {
-                await Transaction.create(data);
+                // await Transaction.create(data);
                 res.redirect("/transaction/menu");
             } else res.redirect("/users");
         }

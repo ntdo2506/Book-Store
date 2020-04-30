@@ -4,7 +4,7 @@ block content
     h1.d-flex.align-items-center
         span.mr-3 User List
         a.btn.btn-primary(href="/users/add") New User
-    table.table
+    table.table(style="height: 100%")
             tr
                 th Avatar
                 th Name
@@ -21,3 +21,4 @@ block content
                         a.btn.btn-light(href="/users/" +user.id +"/delete") Delete
                     td 
                         a.btn.btn-light(href="/users/" +user.id + "/profile") Update
+    include ../layouts/pagination.pug   

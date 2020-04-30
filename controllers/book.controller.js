@@ -8,13 +8,17 @@ cloudinary.config({
 });
 
 module.exports.index = async (req, res) => {
-    // let page = parseInt(req.query.page) || 1;
-    // let perPage = 10;
-    // let start = (page - 1) * perPage;
-    // let end = page * perPage;
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 10;
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
     const book = await Book.find();
+    let numberPage = Math.ceil(book.length / perPage);
     res.render("books/index", {
-        bookList: book,
+        bookList: book.slice(start, end),
+        numberPage: numberPage,
+        titleLink: "books",
+        page: page,
     });
 };
 

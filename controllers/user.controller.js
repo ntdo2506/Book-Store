@@ -9,13 +9,17 @@ cloudinary.config({
 });
 
 module.exports.index = async (req, res) => {
-    // let page = parseInt(req.query.page) || 1;
-    // let perPage = 10;
-    // let start = (page - 1) * perPage;
-    // let end = page * perPage;
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 10;
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
     const user = await User.find();
+    let numberPage = Math.ceil(user.length / perPage);
     res.render("users/index", {
-        users: user,
+        users: user.slice(start, end),
+        numberPage: numberPage,
+        page: page,
+        titleLink: "users",
     });
 };
 

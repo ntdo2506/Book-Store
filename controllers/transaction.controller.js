@@ -3,17 +3,21 @@ const Book = require("../models/book.model");
 const Transaction = require("../models/transaction.model");
 
 module.exports.index = async (req, res) => {
-    // let page = parseInt(req.query.page) || 1;
-    // let perPage = 5;
-    // let start = (page - 1) * perPage;
-    // let end = page * perPage;
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 5;
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
     let transactions = await Transaction.find();
+    let numberPage = Math.ceil(transactions.length) / perPage;
     let users = await User.find();
     let books = await Book.find();
     res.render("transactions/index", {
-        transactions: transactions,
+        transactions: transactions.slice(start, end),
         users: users,
+        numberPage: numberPage,
+        titleLink: "transactions",
         books: books,
+        page: page,
     });
 };
 

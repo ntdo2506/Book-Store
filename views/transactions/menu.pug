@@ -2,7 +2,7 @@ extends ../layouts/common.pug
 
 block content 
     h1 Hello
-    table.table
+    table.table(style="height: 100%")
         tr
             th Book Title
             th Complete
@@ -12,4 +12,5 @@ block content
                         each itemId in item
                             if(itemId.bookId === book.id)
                                 td=book.title
-                                td=item.isComplete    
+                                td=item.isComplete 
+    include ../layouts/pagination.pug 
