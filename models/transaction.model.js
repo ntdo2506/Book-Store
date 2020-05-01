@@ -3,7 +3,13 @@ var mongoose = require("mongoose");
 var transactionSchema = new mongoose.Schema({
     userId: String,
     isComplete: Boolean,
-    bookId: String,
+    bookId: [
+        {
+            _id: String,
+            bookId: String,
+            quantity: Number,
+        },
+    ],
 });
 
 var Transaction = mongoose.model(

@@ -6,7 +6,7 @@ module.exports.menu = async (req, res) => {
         res.redirect("/auth/login");
         return;
     }
-    let transaction = await Transaction.find({
+    let transaction = await Transaction.findOne({
         userId: req.signedCookies.userId1,
     });
     let page = parseInt(req.query.page) || 1;

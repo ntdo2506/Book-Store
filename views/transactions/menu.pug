@@ -2,15 +2,16 @@ extends ../layouts/common.pug
 
 block content 
     h1 Hello
-    table.table(style="height: 100%")
+    table.table
         tr
             th Book Title
+            th Quantity
             th Complete
-        each item in transaction
+        each item in transaction.bookId
             each book in books
                     tr
-                        each itemId in item
-                            if(itemId.bookId === book.id)
-                                td=book.title
-                                td=item.isComplete 
+                        if(item.bookId.toString() === book.id.toString())
+                            td=book.title
+                            td=item.quantity
+                            td=transaction.isComplete 
     include ../layouts/pagination.pug 

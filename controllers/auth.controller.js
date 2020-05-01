@@ -52,14 +52,14 @@ module.exports.postAuth = async (req, res) => {
                 signed: true,
             });
             const sessionId = req.signedCookies.sessionId;
-            const bookId = await Session.findOne({ sessionId });
+            const session = await Session.findOne({ sessionId });
             let data = {
                 userId: user.id,
-                bookId: bookId.cart,
+                bookId: session.cart,
                 isComplete: false,
             };
             if (user.isAdmin === false) {
-                // await Transaction.create(data);
+                await Transaction.create(data);
                 res.redirect("/transaction/menu");
             } else res.redirect("/users");
         }

@@ -29,8 +29,9 @@ block content
                         td=user.name
                 th Book Name
                 each book in books
-                    if(transaction.bookId === book.id)
-                        td=book.title
+                    each bookId in transaction.bookId
+                        if(bookId.bookId.toString() === book.id.toString())
+                            td=book.title
     include ../layouts/pagination.pug 
 
 

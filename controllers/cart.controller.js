@@ -9,7 +9,7 @@ module.exports.addToCart = async (req, res) => {
         res.redirect("/store");
         return;
     }
-    const session = await Session.findOneAndUpdate({ sessionId });
+    const session = await Session.findOne({ sessionId });
     let shouldPush = true;
     session.cart.forEach((item) => {
         if (item.bookId.toString() === bookId) {
@@ -21,7 +21,9 @@ module.exports.addToCart = async (req, res) => {
     if (shouldPush) {
         await Session.findOneAndUpdate(
             { sessionId },
-            { $push: { cart: { bookId, quantity: 1 } } }
+            {
+                $push: { cart: { bookId, quantity: 1 } },
+            }
         );
     }
     res.redirect("/store");
