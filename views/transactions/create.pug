@@ -13,5 +13,8 @@ block content
             select(name="bookId" class="form-control")
                 each book in books
                     option(value=book.id)=book.title
-        div        
-        button(type="submit" class="btn-primary btn mt-2") Create
+        div 
+            label Quantity
+            input(type="number" name="quantity" class="form-control")
+        div
+            button(type="submit" class="btn-primary btn mt-2") Create

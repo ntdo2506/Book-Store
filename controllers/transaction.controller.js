@@ -31,11 +31,21 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.postCreate = async (req, res) => {
-    await Transaction.create({
-        isComplete: false,
-        userId: req.body.userId,
-        bookId: req.body.bookId,
-    });
+    try {
+        await Transaction.create({
+            isComplete: false,
+            userId: req.body.userId,
+            bookId: [
+                {
+                    bookId: req.body.bookId,
+                    quantity: req.body.quantity,
+                },
+            ],
+        });
+    } catch (error) {
+        console.log("That did not go well.");
+        throw error;
+    }
     res.redirect("/transactions");
 };
 

@@ -4,7 +4,7 @@ block content
     h2.d-flex.align-items-center 
         span.mr-3 Transactions
         a.btn.btn-primary(href="transactions/create") Create
-    table.table(style="height: 100%")
+    table.table
         tr
             th(colspan="2") USER
             th(colspan="2") BOOK
@@ -15,13 +15,14 @@ block content
                 th UserId
                 td=transaction.userId
                 th BookId
-                td=transaction.bookId
-                td(rowspan="2")
-                    if !transaction.isComplete
-                        a(href=`/transactions/${transaction.id}/complete`) Complete
-                    else
-                        span Completed
-                td(rowspan="2")=transaction.isComplete
+                each bookId in transaction.bookId
+                    td=bookId.bookId
+                    td(rowspan="2")
+                        if !transaction.isComplete
+                            a(href=`/transactions/${transaction.id}/complete`) Complete
+                        else
+                            span Completed
+                    td(rowspan="2")=transaction.isComplete
             tr    
                 th User Name
                 each user in users

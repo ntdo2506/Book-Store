@@ -5,7 +5,6 @@ var transactionSchema = new mongoose.Schema({
     isComplete: Boolean,
     bookId: [
         {
-            _id: String,
             bookId: String,
             quantity: Number,
         },
