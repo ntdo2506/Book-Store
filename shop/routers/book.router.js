@@ -12,6 +12,8 @@ router.get("/books/create", controller.create);
 
 router.post("/books/create", controller.postCreate);
 
+router.get("/:id/books", controller.store);
+
 router.get("/books/:id/delete", controller.delete);
 
 router.get("/books/:id/update", controller.update);

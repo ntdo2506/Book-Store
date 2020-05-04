@@ -19,6 +19,7 @@ module.exports.index = async (req, res) => {
         numberPage: numberPage,
         titleLink: "shop/books",
         page: page,
+        shopId: req.signedCookies.shopId,
     });
 };
 
@@ -65,7 +66,7 @@ module.exports.update = async (req, res) => {
     });
 };
 
-module.exports.postUpdate = (req, res) => {
+module.exports.postUpdate = async (req, res) => {
     let id = req.body.id;
     cloudinary.uploader.upload(req.file.path, async function (error, result) {
         await Shop.findByIdAndUpdate(id, {
@@ -73,5 +74,13 @@ module.exports.postUpdate = (req, res) => {
             coverUrl: result.url,
         });
         res.redirect("/shop/books");
+    });
+};
+
+module.exports.store = async (req, res) => {
+    let id = req.params.id;
+    let shop = await Shop.findById(id);
+    res.render("shop/books/store", {
+        books: shop.shop,
     });
 };
