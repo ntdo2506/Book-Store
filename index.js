@@ -6,7 +6,7 @@ var cookieParser = require("cookie-parser");
 const port = 3000;
 
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/BookStore", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 
 const bookRouter = require("./router/book.router");
 const userRouter = require("./router/user.router");

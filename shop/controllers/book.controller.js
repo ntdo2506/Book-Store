@@ -80,7 +80,15 @@ module.exports.postUpdate = async (req, res) => {
 module.exports.store = async (req, res) => {
     let id = req.params.id;
     let shop = await Shop.findById(id);
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 10;
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
+    let numberPage = Math.ceil(shop.shop.length / perPage);
     res.render("shop/books/store", {
-        books: shop.shop,
+        books: shop.shop.slice(start, end),
+        numberPage: numberPage,
+        titleLink: "shop/" + id + "/books",
+        page: page,
     });
 };
