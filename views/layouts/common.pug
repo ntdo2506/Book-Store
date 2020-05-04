@@ -31,14 +31,26 @@ html
                                 li.nav-item
                                     a.nav-link(href='/transactions') Transaction
                             else
-                                li.nav-item
-                                    a.nav-link(href='/transaction/menu') Transaction Menu                           
+                                if(user.isOwner === true)
+                                    li.nav-item
+                                        a.nav-link(href='/shop/books') Book 
+                                    li.nav-item
+                                        a.nav-link(href='/shop/transactions') Transaction
+                                else
+                                    li.nav-item
+                                        a.nav-link(href='/transaction/menu') Transaction Menu
+                                    li.nav-item
+                                        a.nav-link(href='/shop/books') Resigter Shop                           
                     
                     ul.navbar-nav.ml-auto
                         if user
                             li.nav-ite.ml-auto
                                 span=user.name   
                         else
+                            li.nav-item
+                                a.nav-link(href='/shop/createAccount') Resigter Shop 
+                            li.nav-ite.ml-auto
+                                a.nav-link(href='/shop/login') Shop 
                             li.nav-ite.ml-auto
                                 a.nav-link(href='/auth/login') Book Rental 
                             li.nav-ite.ml-auto

@@ -38,6 +38,7 @@ module.exports.postAdd = async (req, res) => {
             phone: req.body.phone,
             email: req.body.email,
             password: hash,
+            isOwner: false,
         });
     });
     res.redirect("/users");

@@ -1,0 +1,31 @@
+nav(aria-label='Page navigation example')
+    ul.pagination.justify-content-center
+        li.page-item
+            a.page-link(href=`/${titleLink}?page=1`, aria-label='First')
+                span(aria-hidden='true') &laquo;
+        if(page == 1)
+            li.page-item
+                a.page-link(href=`/${titleLink}?page=1`) 1
+            li.page-item
+                a.page-link(href=`/${titleLink}?page=2`) 2
+            li.page-item
+                a.page-link(href=`/${titleLink}?page=3`) 3
+        else
+            if(page < numberPage)
+                li.page-item
+                    a.page-link(href=`/${titleLink}?page=${page-1}`)=page-1
+                li.page-item
+                    a.page-link(href=`/${titleLink}?page=${page}`)=page
+                li.page-item
+                    a.page-link(href=`/${titleLink}?page=${page+1}`)=page+1
+            else
+                li.page-item
+                    a.page-link(href=`/${titleLink}?page=${numberPage-2}`)=numberPage-2
+                li.page-item
+                    a.page-link(href=`/${titleLink}?page=${numberPage-1}`)=numberPage-1
+                li.page-item
+                    a.page-link(href=`/${titleLink}?page=${numberPage}`)=numberPage
+        li.page-item
+            a.page-link(href=`/${titleLink}?page=${numberPage}`, aria-label='Last')
+                span(aria-hidden='true') &raquo;   
+            

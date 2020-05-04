@@ -8,6 +8,7 @@ var userSchema = new mongoose.Schema({
     wrongLoginCount: Number,
     avatarUrl: String,
     password: String,
+    isOwner: Boolean,
 });
 
 var User = mongoose.model("User", userSchema, "users");
