@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
-const port = 3030;
+const port = process.env.PORT || 3030;
 
 var mongoose = require("mongoose");
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
